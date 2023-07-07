@@ -1,3 +1,7 @@
 body {
   background-color: aqua;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400&family=Raleway:ital,wght@0,100;0,400;1,200;1,300;1,400&display=swap');
