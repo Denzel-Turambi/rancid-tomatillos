@@ -1,13 +1,14 @@
 import './Card.css';
 
-function Card({title, img, rating}) {
+function Card({title, img, rating, id, showMovie}) {
   return (
-    <div className='card'>
-      <img src={img} height='50px' width='30px'></img>
-      <h3>{title}</h3>
-      <h3>{rating}/10</h3>
+    <div onClickCapture= {showMovie} id ={id} className='card'>
+      <img id ={id} src={img} className='movie-poster'></img>
+      <div className='card-info'>
+        <h3 id ={id}>{title}</h3>
+       <h3 id ={id}>{rating}/10</h3>
+       </div>
     </div>
-
   )
 }
 
