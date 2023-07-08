@@ -14,10 +14,11 @@ function MovieContainer(props) {
           id={movie.id}
           key={movie.id}
           showMovie= {props.showMovie}
+          clickHandler= {props.clickHandler}
           />
         </div>
         <div>
-          <MovieDetails 
+          {props.showMovieDetail && <MovieDetails 
           title={movie.title}
           tagline= {movie.tagline}
           rating={movie.average_rating}
@@ -32,7 +33,8 @@ function MovieContainer(props) {
           id={movie.id}
           exitShowMovie = {props.exitShowMovie}
           showMovieDetail = {props.showMovieDetail}
-          />
+          selectedMovie = {props.selectedMovie}
+          />}
         </div>
     </div>
     )
