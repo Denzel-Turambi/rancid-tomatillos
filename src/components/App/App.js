@@ -2,7 +2,7 @@
 import './App.css';
 import movieData from '../MovieData/MovieData';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import Card from '../Card/Card';
+import MovieDetails from '../MovieDetails/MovieDetails'
 import {useState} from 'react';
 
 function App() {
@@ -21,9 +21,6 @@ function App() {
     movies.forEach(movie => {
       if(parseInt(event.target.id) === movie.id){
         setSelectedMovie(movie)
-        // setShowMovieDetail(true)
-        // console.log('CLICKED')
-        // console.log('SELECTED MOVIE', event.target)
       }
     })
   }
@@ -37,7 +34,8 @@ return (
   <div>
     <h1>Rancid Tomatillos</h1>
     <section className='all-movies-display'>
-      <MovieContainer showMovieDetail= {showMovieDetail} clickHandler= {clickHandler} showMovie= {showMovie} movies = {movies} exitShowMovie= {exitShowMovie} selectedMovie = {selectedMovie}/>
+      {!showMovieDetail && <MovieContainer showMovieDetail= {showMovieDetail} clickHandler= {clickHandler} showMovie= {showMovie} movies = {movies} exitShowMovie= {exitShowMovie} selectedMovie = {selectedMovie}/>}
+      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie} showMovieDetail = {showMovieDetail} selectedMovie = {selectedMovie}/>}
     </section>
   </div>
 )
