@@ -1,8 +1,9 @@
 import './Card.css';
+import {useState} from 'react';
 
-function Card({title, img, rating, id, showMovie}) {
+function Card({title, img, rating, id, clickHandler, showMovie}) {
   return (
-    <div onClickCapture= {showMovie} id ={id} className='card'>
+    <div onClick= {clickHandler} id ={id} className='card'>
       <img id ={id} src={img} className='movie-poster'></img>
       <div className='card-info'>
         <h3 id ={id}>{title}</h3>
