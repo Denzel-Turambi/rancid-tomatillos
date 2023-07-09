@@ -2,15 +2,22 @@
 import './App.css';
 import movieData from '../MovieData/MovieData';
 import MovieContainer from '../MovieContainer/MovieContainer';
-import MovieDetails from '../MovieDetails/MovieDetails'
-import {useState} from 'react';
+import MovieDetails from '../MovieDetails/MovieDetails';
+import { getMovies } from '../../ApiCalls';
+import {useState, useEffect} from 'react';
 
 function App() {
-  const [movies, setMovies] = useState(movieData)
+  const [movies, setMovies] = useState([])
   //popup
   const [showMovieDetail, setShowMovieDetail] = useState(false)
   const [selectedMovie, setSelectedMovie] = useState({})
 
+  useEffect(() => {
+    getMovies()
+    .then(data => setMovies(data.movies))
+    .catch(error => console.log('error', error))
+  }, [])
+ 
   function clickHandler(event){
     showMovie(event)
     setShowMovieDetail(true)
