@@ -2,6 +2,7 @@ import './MovieContainer.css';
 import Card from '../Card/Card';
 
 function MovieContainer(props) {
+  console.log('PROPS MOVIES', props.movies)
   const movieCards = props.movies.map(movie => {
     return (
         <div>
@@ -17,7 +18,6 @@ function MovieContainer(props) {
         </div>
     )
   })
-  
   return (
     <div className='movie-container'>
       {movieCards}
