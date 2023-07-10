@@ -1,6 +1,22 @@
 import './MovieDetails.css';
+import { getSingleMovie } from '../../ApiCalls';
+import { useEffect, useState } from 'react'
 
-function MovieDetails({exitShowMovie, showMovieDetail, selectedMovie}){  
+function MovieDetails({exitShowMovie, selectedMovieID}){  
+  const [selectedMovie, setSelectedMovie] = useState({})
+  
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await getSingleMovie(selectedMovieID)
+  //     setSelectedMovie(data.movie)
+  //   }
+  //   fetchData();
+  // }, []);
+useEffect(() => {
+  getSingleMovie(selectedMovieID)
+    .then(data => setSelectedMovie(data.movie))
+}, [])
+
     return (
       <div id={selectedMovie.id} className='movie-details'>
         <h2 className='title'>{selectedMovie.title}</h2>
