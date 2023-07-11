@@ -11,7 +11,7 @@ function App() {
   //popup
   const [showMovieDetail, setShowMovieDetail] = useState(false)
   const [movieID, setMovieID] = useState("")
-  const [error, setError] = useState("")
+  // const [error, setError] = useState("")
 
   useEffect(() => {
     getMovies()
@@ -36,7 +36,7 @@ return (
     <h1>Rancid Tomatillos</h1>
     <section className='all-movies-display'>
       {!showMovieDetail && <MovieContainer clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
-      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}
+      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} />}
     </section>
   </div>
 )

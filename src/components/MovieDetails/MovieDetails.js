@@ -4,19 +4,37 @@ import { useEffect, useState } from 'react'
 
 function MovieDetails({exitShowMovie, selectedMovieID}){  
   const [selectedMovie, setSelectedMovie] = useState({})
-  
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const data = await getSingleMovie(selectedMovieID)
-  //     setSelectedMovie(data.movie)
-  //   }
-  //   fetchData();
-  // }, []);
+  const [singleMovieError, setSingleMovieError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
 useEffect(() => {
+  if(selectedMovieID){
+    setIsLoading(true)
+    setSingleMovieError(null)
+    setSingleMovieError('')
+
   getSingleMovie(selectedMovieID)
     .then(data => setSelectedMovie(data.movie))
+    .catch(err => {
+      if(err.status === 500){
+        setSingleMovieError('Oops! There is a server error.')
+      } else {
+      setSingleMovieError(err)
+      }
+    })
+    .finally(() => {
+      setIsLoading(false)
+    })
+  }
 }, [])
 
+console.log('ERROR', singleMovieError)
+
+if(singleMovieError){
+  return <h1>{`${singleMovieError}. Please try again later.`}</h1>
+} else if (isLoading){
+  return <h1>Loading......</h1>
+}
     return (
       <div id={selectedMovie.id} className='movie-details'>
         <h2 className='title'>{selectedMovie.title}</h2>
