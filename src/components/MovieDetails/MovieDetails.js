@@ -4,19 +4,45 @@ import { useEffect, useState } from 'react'
 
 function MovieDetails({exitShowMovie, selectedMovieID}){  
   const [selectedMovie, setSelectedMovie] = useState({})
-  
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const data = await getSingleMovie(selectedMovieID)
-  //     setSelectedMovie(data.movie)
-  //   }
-  //   fetchData();
-  // }, []);
+  const [singleMovieError, setSingleMovieError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+//remove selectedMovie state 
+
+
 useEffect(() => {
+  if(selectedMovieID){
+    setIsLoading(true)
+    setSingleMovieError(null)
+    setSingleMovieError('')
+
   getSingleMovie(selectedMovieID)
     .then(data => setSelectedMovie(data.movie))
+    .catch(err => {
+      if(err.status === 500){
+        setSingleMovieError('Oops! There is a server error.')
+      } else {
+      setSingleMovieError(err)
+      }
+    })
+    .finally(() => {
+      setIsLoading(false)
+    })
+  }
 }, [])
 
+//page that you go to has to have access to the data
+//whatever your router is going to, you have to make sure the componnent has access to the data it needs 
+//router you will set it up with an element inside 
+//when you set up the routes the element is the component and you would pass the props through that component 
+//filter you would do use state 
+//router can set path with movies based on the ID
+
+
+if(singleMovieError){
+  return <h1>{`${singleMovieError}. Please try again later.`}</h1>
+} else if (isLoading){
+  return <h1>Loading......</h1>
+}
     return (
       <div id={selectedMovie.id} className='movie-details'>
         <h2 className='title'>{selectedMovie.title}</h2>
