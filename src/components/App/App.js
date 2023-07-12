@@ -51,9 +51,11 @@ if(error){
 return (
   //use fragment instead of Div ?
   <div>
-    <h1>Rancid Tomatillos</h1>
+    <nav>
+      <h1>Rancid Tomatillos</h1>
+    </nav>
     <section className='all-movies-display'>
-      {!showMovieDetail && <MovieContainer clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
+      {!showMovieDetail && <MovieContainer className='movie-container' clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
       {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}
     </section>
   </div>

@@ -5,7 +5,7 @@ function MovieContainer(props) {
   console.log('PROPS MOVIES', props.movies)
   const movieCards = props.movies.map(movie => {
     return (
-        <div>
+        <div className= '.movie-container'>
           <Card 
           title={movie.title}
           img={movie.poster_path}
