@@ -1,5 +1,5 @@
 body {
-  background-color: aqua;
+  background-color: #0D1B2A;
   font-family: 'Josefin Sans', sans-serif;
   /* font-family: 'Raleway', sans-serif; */
 }
@@ -10,3 +10,9 @@ body {
   display: flex;
   justify-content: center;
 }
+
+/* rich black: #0D1B2A
+Oxford blue: #1B263B
+Fern green: #537957
+Baby powder: #FDFFFC
+Celadon: #BBDB9B */

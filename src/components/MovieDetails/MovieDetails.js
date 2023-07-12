@@ -6,6 +6,8 @@ function MovieDetails({exitShowMovie, selectedMovieID}){
   const [selectedMovie, setSelectedMovie] = useState({})
   const [singleMovieError, setSingleMovieError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+//remove selectedMovie state 
+
 
 useEffect(() => {
   if(selectedMovieID){
@@ -28,7 +30,13 @@ useEffect(() => {
   }
 }, [])
 
-console.log('ERROR', singleMovieError)
+//page that you go to has to have access to the data
+//whatever your router is going to, you have to make sure the componnent has access to the data it needs 
+//router you will set it up with an element inside 
+//when you set up the routes the element is the component and you would pass the props through that component 
+//filter you would do use state 
+//router can set path with movies based on the ID
+
 
 if(singleMovieError){
   return <h1>{`${singleMovieError}. Please try again later.`}</h1>

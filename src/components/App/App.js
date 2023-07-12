@@ -11,13 +11,25 @@ function App() {
   //popup
   const [showMovieDetail, setShowMovieDetail] = useState(false)
   const [movieID, setMovieID] = useState("")
-  // const [error, setError] = useState("")
+  const [error, setError] = useState("")
+  const [allMoviesLoading, setAllMoviesLoading] = useState(false)
 
   useEffect(() => {
+    setAllMoviesLoading(true)
     getMovies()
     .then(data => setMovies(data.movies))
-    .catch(error => console.log('error', error))
+    .catch(error => {
+      if(error.status === 500) {
+        setError('Oops! Looks like there is a server error.')
+      } else {
+        setError(error)
+      }
+    })
+    .finally(() => {
+      setAllMoviesLoading(false)
+    })
   }, [])
+
 
 
 function clickHandler(event){
@@ -30,17 +42,22 @@ function clickHandler(event){
     setShowMovieDetail(false)
   }
 
+if(error){
+  return(<h1>{"An error occurred while fetching movies."}</h1>)
+} else if(allMoviesLoading) {
+  return(<h1>Loading...</h1>)
+}
+
 return (
   //use fragment instead of Div ?
   <div>
     <h1>Rancid Tomatillos</h1>
     <section className='all-movies-display'>
       {!showMovieDetail && <MovieContainer clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
-      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} />}
+      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}
     </section>
   </div>
 )
 }
 
 export default App;
-
