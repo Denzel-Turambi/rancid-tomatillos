@@ -1,6 +1,8 @@
 import './MovieDetails.css';
 import { getSingleMovie } from '../../ApiCalls';
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+
 
 function MovieDetails({exitShowMovie, selectedMovieID}){  
   const [selectedMovie, setSelectedMovie] = useState({})
@@ -61,3 +63,7 @@ if(singleMovieError){
 }
 
 export default MovieDetails
+
+MovieDetails.propTypes ={
+  selectedMovieID: PropTypes.object.isRequired
+}

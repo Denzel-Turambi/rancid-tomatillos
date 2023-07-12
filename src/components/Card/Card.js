@@ -1,6 +1,7 @@
 import './Card.css';
 import {useState, useEffect} from 'react';
 import { getSingleMovie } from '../../ApiCalls';
+import PropTypes from 'prop-types'
 
 function Card({title, img, rating, id, clickHandler, showMovie}) {
 // const [movieID, setMovieID] = useState("")
@@ -20,6 +21,13 @@ function Card({title, img, rating, id, clickHandler, showMovie}) {
 
 export default Card;
 
+Card.propTypes = {
+  id: PropTypes.number.isRequired, 
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  clickHandler:PropTypes.func.isRequired
+}
 
 
 // useEffect(() => {
