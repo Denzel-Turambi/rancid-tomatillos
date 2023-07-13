@@ -5,6 +5,7 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { getMovies, getSingleMovie } from '../../ApiCalls';
 import {useState, useEffect} from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -33,10 +34,16 @@ function App() {
 
 
 function clickHandler(event){
-  console.log('CLICK HANDLER', event.target.id)
-  setMovieID(parseInt(event.target.id))
+  setMovieID(parseInt( event.target.id))
   setShowMovieDetail(true)
+  // movieLink(event.target.id)
   }
+
+// function movieLink() {
+//   return (
+//     <NavLink to = {`/movies/${movieID}`}/>
+//   )
+// }
 
   function exitShowMovie(){
     setShowMovieDetail(false)
@@ -55,11 +62,27 @@ return (
       <h1>Rancid Tomatillos</h1>
     </nav>
     <section className='all-movies-display'>
-      {!showMovieDetail && <MovieContainer className='movie-container' clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
-      {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}
+    <NavLink to = {`/movies/${movieID}`}/>
+    <Routes>
+        <Route path ="/" element={ 
+          !showMovieDetail && (
+        <MovieContainer className='movie-container' clickHandler= {clickHandler} movies = {movies} exitShowMovie= {exitShowMovie} /> 
+          ) 
+        } />
+      <Route path = "/movies/:movieID" element={
+        showMovieDetail && (
+          <MovieDetails exitShowMovie = {exitShowMovie}  selectedMovieID= {movieID} errorHandling = {error} setErrorHandling = {setError}/>
+        )
+      } />
+    </Routes>
     </section>
   </div>
 )
 }
 
+//get rid of all click events, link will get everything to be clickable 
+
 export default App;
+
+// {!showMovieDetail && <MovieContainer className='movie-container' clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
+// {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}

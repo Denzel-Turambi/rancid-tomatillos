@@ -2,9 +2,11 @@ import './MovieDetails.css';
 import { getSingleMovie } from '../../ApiCalls';
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-
+import { useParams, NavLink, Link} from 'react-router-dom'
 
 function MovieDetails({exitShowMovie, selectedMovieID}){  
+const movieID = useParams()
+console.log('hello')
   const [selectedMovie, setSelectedMovie] = useState({})
   const [singleMovieError, setSingleMovieError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -30,7 +32,7 @@ useEffect(() => {
       setIsLoading(false)
     })
   }
-}, [])
+}, [selectedMovieID])
 
 //page that you go to has to have access to the data
 //whatever your router is going to, you have to make sure the componnent has access to the data it needs 
@@ -47,6 +49,8 @@ if(singleMovieError){
 }
     return (
       <div id={selectedMovie.id} className='movie-details'>
+  {/* {console.log(movieID)} */}
+  <Link to={`/movies/${movieID}`}>
         <h2 className='title'>{selectedMovie.title}</h2>
         <button onClick={exitShowMovie} > Back </button>
         <p>{selectedMovie.tagline}</p>
@@ -58,12 +62,13 @@ if(singleMovieError){
         {selectedMovie.revenue && <p>Revenue: ${selectedMovie.revenue}</p> || <p>Revenue: Information not available</p>}
         {selectedMovie.budget && <p>Budget: ${selectedMovie.budget}</p> || <p>Budget: Information not available</p>}
         <img className='movie-details-img' src={selectedMovie.backdrop_path} ></img>
-      </div>
+      </Link>
+     </div>
     )
 }
 
 export default MovieDetails
 
-MovieDetails.propTypes ={
-  selectedMovieID: PropTypes.object.isRequired
-}
+// MovieDetails.propTypes ={
+//   selectedMovieID: PropTypes.number.isRequired
+// }
