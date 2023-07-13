@@ -11,7 +11,7 @@ function App() {
   const [movies, setMovies] = useState([])
   //popup
   const [showMovieDetail, setShowMovieDetail] = useState(false)
-  const [movieID, setMovieID] = useState(436270)
+  const [movieID, setMovieID] = useState("")
   const [error, setError] = useState("")
   const [allMoviesLoading, setAllMoviesLoading] = useState(false)
 
@@ -33,21 +33,7 @@ function App() {
 
 
 
-// function clickHandler(event){
-//   setMovieID(parseInt( event.target.id))
-//   setShowMovieDetail(true)
-//   // movieLink(event.target.id)
-//   }
 
-// function movieLink() {
-//   return (
-//     <NavLink to = {`/movies/${movieID}`}/>
-//   )
-// }
-
-  // function exitShowMovie(){
-  //   setShowMovieDetail(false)
-  // }
 
 if(error){
   return(<h1>{"An error occurred while fetching movies."}</h1>)
@@ -67,7 +53,7 @@ return (
         <Route path ="/" element={ 
         <MovieContainer className='movie-container' movies = {movies} /> 
         } />
-      <Route path = "/movies/436270" element={
+      <Route path = "/movies/:id" element={
           <MovieDetails  errorHandling = {error} setErrorHandling = {setError}/>
       } />
     </Routes>
@@ -80,5 +66,18 @@ return (
 
 export default App;
 
-// {!showMovieDetail && <MovieContainer className='movie-container' clickHandler= {clickHandler}  movies = {movies} exitShowMovie= {exitShowMovie}/>}
-// {showMovieDetail && <MovieDetails  exitShowMovie = {exitShowMovie}  selectedMovieID={movieID} errorHandling = {error} setErrorHandling = {setError}/>}
+// function clickHandler(event){
+//   setMovieID(parseInt( event.target.id))
+//   setShowMovieDetail(true)
+//   // movieLink(event.target.id)
+//   }
+
+// function movieLink() {
+//   return (
+//     <NavLink to = {`/movies/${movieID}`}/>
+//   )
+// }
+
+  // function exitShowMovie(){
+  //   setShowMovieDetail(false)
+  // }

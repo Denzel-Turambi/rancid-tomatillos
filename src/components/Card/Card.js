@@ -10,7 +10,7 @@ function Card({title, img, rating, id}) {
 
 
   return (
-      <Link to = {`/movies/436270`}> 
+      <Link to = {`/movies/${id}`}> 
     <div  id ={id} className='card'>
       <img id ={id} src={img} className='movie-poster' alt={title}></img>
       <div className='card-info'>
