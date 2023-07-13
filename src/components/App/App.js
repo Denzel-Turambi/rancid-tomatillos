@@ -65,14 +65,10 @@ return (
     {/* <NavLink to = {`/movies/${movieID}`}/> */}
     <Routes>
         <Route path ="/" element={ 
-          !showMovieDetail && (
         <MovieContainer className='movie-container' movies = {movies} /> 
-          ) 
         } />
       <Route path = "/movies/436270" element={
-        showMovieDetail && (
           <MovieDetails  errorHandling = {error} setErrorHandling = {setError}/>
-        )
       } />
     </Routes>
     </section>

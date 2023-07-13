@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { useParams, NavLink, Link} from 'react-router-dom'
 
 function MovieDetails({exitShowMovie, selectedMovieID}){  
-const movieID = useParams()
+console.log(useParams())
 console.log('hello')
   const [selectedMovie, setSelectedMovie] = useState({})
   const [singleMovieError, setSingleMovieError] = useState('')
@@ -50,7 +50,7 @@ if(singleMovieError){
     return (
       <div id={selectedMovie.id} className='movie-details'>
   {/* {console.log(movieID)} */}
-  <Link to={`/movies/${movieID}`}>
+  {/* <Link to={`/movies/${movieID}`}> */}
         <h2 className='title'>{selectedMovie.title}</h2>
         <button onClick={exitShowMovie} > Back </button>
         <p>{selectedMovie.tagline}</p>
@@ -62,7 +62,7 @@ if(singleMovieError){
         {selectedMovie.revenue && <p>Revenue: ${selectedMovie.revenue}</p> || <p>Revenue: Information not available</p>}
         {selectedMovie.budget && <p>Budget: ${selectedMovie.budget}</p> || <p>Budget: Information not available</p>}
         <img className='movie-details-img' src={selectedMovie.backdrop_path} ></img>
-      </Link>
+      {/* </Link> */}
      </div>
     )
 }

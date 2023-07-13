@@ -10,14 +10,15 @@ function Card({title, img, rating, id}) {
 
 
   return (
+      <Link to = {`/movies/436270`}> 
     <div  id ={id} className='card'>
-      <Link to = {`/movies/436270`}/>
       <img id ={id} src={img} className='movie-poster' alt={title}></img>
       <div className='card-info'>
         <h3 id ={id}>{title}</h3>
        <h3 id ={id}>{rating}/10</h3>
        </div>
     </div>
+    </Link>
   )
 }
 
