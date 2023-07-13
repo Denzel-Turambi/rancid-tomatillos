@@ -15,7 +15,6 @@ function MovieContainer(props) {
           id={movie.id}
           key={movie.id}
           showMovie= {props.showMovie}
-          clickHandler= {props.clickHandler}
           />
         </div>
         //add navlink here 
