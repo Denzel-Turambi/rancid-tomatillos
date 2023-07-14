@@ -1,20 +1,21 @@
-// import logo from './logo.svg';
+
 import './App.css';
-// import movieData from '../MovieData/MovieData';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { getMovies, getSingleMovie } from '../../ApiCalls';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
   const [movies, setMovies] = useState([])
-  //popup
-  const [showMovieDetail, setShowMovieDetail] = useState(false)
-  const [movieID, setMovieID] = useState("")
   const [error, setError] = useState("")
   const [allMoviesLoading, setAllMoviesLoading] = useState(false)
-
+  const [search, setSearch] = useState("")
+  const [filter, setFilter] = useState("")
+  const [value, setValue] = useState("")
+  const [barVisible, setBarVisible] = useState(true)
+ 
   useEffect(() => {
     setAllMoviesLoading(true)
     getMovies()
@@ -31,10 +32,23 @@ function App() {
     })
   }, [])
 
+  useEffect(()=>{
+    const filteredMovies = movies.filter(movie=> movie.title.toLowerCase().includes(search))
+    setFilter(filteredMovies)
+  }, [movies, search])
 
+  function searchFilter(event){
+    setValue(event.target.value)
+    const searchMovie = event.target.value.toLowerCase()
+      setSearch(searchMovie)
+  }
 
+function clearInput(){
+ setSearch("") 
+ setBarVisible(true)
+}
 
-
+//put in function ?
 if(error){
   return(<h1>{"An error occurred while fetching movies."}</h1>)
 } else if(allMoviesLoading) {
@@ -42,19 +56,18 @@ if(error){
 }
 
 return (
-  //use fragment instead of Div ?
   <div>
-    <nav>
-      <h1>Rancid Tomatillos</h1>
-    </nav>
+  <nav className="header">
+    <h1>Rancid Tomatillos</h1>
+    < SearchBar search={search} searchFilter={searchFilter} clearInput={clearInput} setBarVisible={setBarVisible} barVisible={barVisible}/>
+  </nav>
     <section className='all-movies-display'>
-    {/* <NavLink to = {`/movies/${movieID}`}/> */}
     <Routes>
         <Route path ="/" element={ 
-        <MovieContainer className='movie-container' movies = {movies} /> 
+        <MovieContainer className='movie-container' movies = {movies} search={search} searchFilter={searchFilter} filtered={filter}/> 
         } />
       <Route path = "/movies/:id" element={
-          <MovieDetails  errorHandling = {error} setErrorHandling = {setError}/>
+          <MovieDetails  errorHandling = {error} setErrorHandling = {setError} selectedMovie={filter} clearInput={clearInput} value={value} setBarVisible={setBarVisible}/>
       } />
     </Routes>
     </section>
@@ -62,22 +75,5 @@ return (
 )
 }
 
-//get rid of all click events, link will get everything to be clickable 
-
 export default App;
 
-// function clickHandler(event){
-//   setMovieID(parseInt( event.target.id))
-//   setShowMovieDetail(true)
-//   // movieLink(event.target.id)
-//   }
-
-// function movieLink() {
-//   return (
-//     <NavLink to = {`/movies/${movieID}`}/>
-//   )
-// }
-
-  // function exitShowMovie(){
-  //   setShowMovieDetail(false)
-  // }
