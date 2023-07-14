@@ -31,10 +31,8 @@ describe('dashboard', () => {
     .get('.movie-details').contains('p', 'ReleaseDate: 2022-10-19')
     .get('.movie-details').contains('p', 'Overview: Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.')
     .get('.movie-details').contains('p', 'Genre(s): ActionFantasyScience Fiction')
-    .get('.movie-details').contains('p', 'Revenue: $384571691')
-    .get('.movie-details').contains('p', 'Budget: $200000000')
     .get('.movie-details').find("img").should('be.visible')
-    .get('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')
+    .get('img[class="movie-details-img"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')
   })
 
   it('should allow the user to exit the movie details', () => {

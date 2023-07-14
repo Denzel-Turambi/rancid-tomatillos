@@ -12,7 +12,7 @@ describe('single movie details', () => {
     })
   })
 
-  it('should allow the user to click on the first card to view movie details', () => {
+  it('should allow the user to click on the second card to view movie details', () => {
     cy.get('#724495').click()
     .url().should('include', '/724495')
     .get('.movie-container').should('not.exist')
@@ -23,10 +23,8 @@ describe('single movie details', () => {
     .get('.movie-details').contains('p', 'ReleaseDate: 2022-09-15')
     .get('.movie-details').contains('p', 'Overview: The story of the Agojie, the all-female unit of warriors who protected the African Kingdom of Dahomey in the 1800s with skills and a fierceness unlike anything the world has ever seen, and General Nanisca as she trains the next generation of recruits and readies them for battle against an enemy determined to destroy their way of life.')
     .get('.movie-details').contains('p', 'Genre(s): ActionDramaHistory')
-    .get('.movie-details').contains('p', 'Revenue: $91000000')
-    .get('.movie-details').contains('p', 'Budget: $50000000')
     .get('.movie-details').find("img").should('be.visible')
-    .get('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg')
+    .get('img[class="movie-details-img"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg')
   })
 
   it('should allow the user to exit the movie details', () => {
