@@ -5,21 +5,23 @@ describe('dashboard', () => {
       fixture: '.././fixtures/allMoviesData.json'
     })
     .visit('http://localhost:3000/')
+
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', {
+      statusCode: 201,
+      fixture: '.././fixtures/movieData436270.json'
+    })
   })
 
   it('should display all movies on page load', () => {
     cy.get('nav').contains('h1', 'Rancid Tomatillos')
+    .url().should('include', '/')
     .get('.all-movies-display').contains('.movie-container', 'Black Adam')
     .get('.all-movies-display').contains('.movie-container', '4/10')
     .get('.card').find("img").should('be.visible')
   })
 
   it('should allow the user to click on the first card to view movie details', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', {
-      statusCode: 201,
-      fixture: '.././fixtures/movieData436270.json'
-    })
-    .get('#436270').click()
+    cy.get('#436270').click()
     .url().should('include', '/436270')
     .get('.movie-details').contains('h2', 'Black Adam')
     .get('.movie-details').contains('p', 'The world needed a hero. It got Black Adam.')
@@ -31,14 +33,11 @@ describe('dashboard', () => {
     .get('.movie-details').contains('p', 'Revenue: $384571691')
     .get('.movie-details').contains('p', 'Budget: $200000000')
     .get('.movie-details').find("img").should('be.visible')
+    .get('img').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg')
   })
 
   it('should allow the user to exit the movie details', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', {
-      statusCode: 201,
-      fixture: '.././fixtures/movieData436270.json'
-    })
-    .get('#436270').click()
+    cy.get('#436270').click()
     .url().should('include', '/436270')
     .get('button').click()
     .url().should('include', '/')
@@ -46,5 +45,6 @@ describe('dashboard', () => {
     .get('.all-movies-display').contains('.movie-container', 'Black Adam')
     .get('.all-movies-display').contains('.movie-container', '4/10')
     .get('.card').find("img").should('be.visible')
+    .get('img[id="436270"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
   })
 })
