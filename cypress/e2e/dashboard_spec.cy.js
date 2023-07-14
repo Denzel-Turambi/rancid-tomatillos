@@ -23,6 +23,7 @@ describe('dashboard', () => {
   it('should allow the user to click on the first card to view movie details', () => {
     cy.get('#436270').click()
     .url().should('include', '/436270')
+    .get('.movie-container').should('not.exist')
     .get('.movie-details').contains('h2', 'Black Adam')
     .get('.movie-details').contains('p', 'The world needed a hero. It got Black Adam.')
     .get('.movie-details').contains('p', 'Average Rating: 40%')

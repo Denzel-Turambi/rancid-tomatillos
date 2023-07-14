@@ -15,6 +15,7 @@ describe('single movie details', () => {
   it('should allow the user to click on the first card to view movie details', () => {
     cy.get('#724495').click()
     .url().should('include', '/724495')
+    .get('.movie-container').should('not.exist')
     .get('.movie-details').contains('h2', 'The Woman King')
     .get('.movie-details').contains('p', 'Her reign begins.')
     .get('.movie-details').contains('p', 'Average Rating: 40%')
