@@ -2,11 +2,9 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
   position:relative;
   height: 70%;
   width:80%;
-  border: 3px solid red;
   background-color: whitesmoke;
 }
 
@@ -16,18 +14,19 @@
 
 .movie-details-img {
   position: relative;
-  opacity: 60%;
- width:80%
+  width:100%;
 }
 
-
+.text-details {
+  margin-left: 1em;
+}
 
 .details-btn{
+  cursor: pointer;
  position:absolute;
  top: 0;
  right: 0;
  border:none;
- border-radius: 6px;
- height:20px;
- width:20px;
+ padding: 8px;
+ background-color: #BBDB9B;
 }

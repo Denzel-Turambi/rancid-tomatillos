@@ -1,5 +1,7 @@
 
 import './App.css';
+import '../../Tomatillo.png';
+import '../../logo.svg'
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { getMovies, getSingleMovie } from '../../ApiCalls';
@@ -50,15 +52,18 @@ function clearInput(){
 
 //put in function ?
 if(error){
-  return(<h1>{"An error occurred while fetching movies."}</h1>)
+  return(<h1 className ="error-message" >{"An error occurred while fetching movies."}</h1>)
 } else if(allMoviesLoading) {
-  return(<h1>Loading...</h1>)
+  return(<h1 className ="error-message" >Loading...</h1>)
 }
 
 return (
   <div>
   <nav className="header">
-    <h1>Rancid Tomatillos</h1>
+    {/* <div class='logo'> */}
+      <h1 className ="logo-title">Rancid Tomatillos</h1>
+      <img className ="logo-img" src={require('../../Tomatillo.png')} height='160px' width='160px'/>
+    {/* </div> */}
     < SearchBar search={search} searchFilter={searchFilter} clearInput={clearInput} setBarVisible={setBarVisible} barVisible={barVisible}/>
   </nav>
     <section className='all-movies-display'>

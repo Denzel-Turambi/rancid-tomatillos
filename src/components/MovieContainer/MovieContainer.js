@@ -37,7 +37,7 @@ function MovieContainer(props) {
   })
 }
 if(props.search && !movieFilter.length) {
-  return (<p>Sorry, based on your search there are no movies available. Try again! </p>)
+  return (<p className ="error-message">Sorry, based on your search there are no movies available. Try again! </p>)
 }
   return (
     <div className='movie-container'>
