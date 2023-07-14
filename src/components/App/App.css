@@ -1,5 +1,5 @@
 body {
-  background-color: #FDFFFC;
+  background-color: #0D1B2A;
   font-family: 'Josefin Sans', sans-serif;
   /* font-family: 'Raleway', sans-serif; */
 }
@@ -11,10 +11,24 @@ body {
   justify-content: center;
 }
 
+.logo-img {
+  margin-right: 35%;
+}
+
+.logo-title {
+  color:#FDFFFC;
+  font-size: 3.5em;
+  margin: 2% 0 2% 2%;
+  text-shadow: 0 0 7px #FDFFFC;
+}
+
 .header{
   display:flex;
   align-items: center;
-  justify-content: space-between;
+}
+
+.error-message {
+  color: #FDFFFC;
 }
 /* rich black: #0D1B2A
 Oxford blue: #1B263B

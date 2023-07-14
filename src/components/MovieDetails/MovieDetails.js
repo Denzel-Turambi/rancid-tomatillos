@@ -36,9 +36,9 @@ useEffect(() => {
 
 
 if(singleMovieError){
-  return <h1>{`${singleMovieError}. Please try again later.`}</h1>
+  return <h1 className ="error-message" >{`${singleMovieError}. Please try again later.`}</h1>
 } else if (isLoading){
-  return <h1>Loading......</h1>
+  return <h1 className ="error-message" >Loading......</h1>
 }
     return (
       <div id={selectedMovie.id} className='movie-details'>
@@ -46,14 +46,14 @@ if(singleMovieError){
         <Link to={"/"}>
         <button className="details-btn"onClick={clearInput}> Back </button>
         </Link>
-        <p>{selectedMovie.tagline}</p>
-        <p>Average Rating: {selectedMovie.average_rating * 10}%</p>
-        <p>Runtime: {selectedMovie.runtime} minutes </p>
-        <p>ReleaseDate: {selectedMovie.release_date}</p>
-        <p>Overview: {selectedMovie.overview}</p>
-        <p>Genre(s): {selectedMovie.genres}</p>
-        {selectedMovie.revenue && <p>Revenue: ${selectedMovie.revenue}</p> || <p>Revenue: Information not available</p>}
-        {selectedMovie.budget && <p>Budget: ${selectedMovie.budget}</p> || <p>Budget: Information not available</p>}
+        <p className="text-details">{selectedMovie.tagline}</p>
+        <p className="text-details"> <strong>Average Rating: </strong> {selectedMovie.average_rating * 10}%</p>
+        <p className="text-details"> <strong>Runtime: </strong> {selectedMovie.runtime} minutes </p>
+        <p className="text-details"> <strong>ReleaseDate: </strong> {selectedMovie.release_date}</p>
+        <p className="text-details"> <strong>Overview: </strong> {selectedMovie.overview}</p>
+        <p className="text-details"> <strong>Genre(s): </strong> {selectedMovie.genres}</p>
+        {/* {selectedMovie.revenue && <p>Revenue: ${selectedMovie.revenue}</p> || <p>Revenue: Information not available</p>}
+        {selectedMovie.budget && <p>Budget: ${selectedMovie.budget}</p> || <p>Budget: Information not available</p>} */}
         <img className='movie-details-img' src={selectedMovie.backdrop_path} ></img>
      </div>
     )

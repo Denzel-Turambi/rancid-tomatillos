@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background-color: white;
-  height: 90vh;
+  background-color: #FDFFFC;
+  height: 100%;
   width: 90vw;
 }

@@ -33,7 +33,7 @@ if(!search && barVisible){
         onChange ={searchFilter}
         />
       </form>
-        <button onClick={clearInput}>clear input</button>
+        <button className="clear-btn" onClick={clearInput}>clear input</button>
       </div>
     )
 }
