@@ -4,16 +4,14 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams, NavLink, Link} from 'react-router-dom'
 
-function MovieDetails({clearInput, value}){  
-console.log('Param', useParams())
+function MovieDetails({clearInput, setBarVisible}){  
+
 const id = useParams()
-console.log('ID',id.id)
   const [selectedMovie, setSelectedMovie] = useState({})
   const [singleMovieError, setSingleMovieError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-//remove selectedMovie state 
-
+setBarVisible(false)
 
 useEffect(() => {
   if(id.id){
@@ -37,7 +35,6 @@ useEffect(() => {
 }, [])
 
 
-
 if(singleMovieError){
   return <h1>{`${singleMovieError}. Please try again later.`}</h1>
 } else if (isLoading){
@@ -47,7 +44,7 @@ if(singleMovieError){
       <div id={selectedMovie.id} className='movie-details'>
         <h2 className='title'>{selectedMovie.title}</h2>
         <Link to={"/"}>
-        <button onClick={clearInput}> Back </button>
+        <button className="details-btn"onClick={clearInput}> Back </button>
         </Link>
         <p>{selectedMovie.tagline}</p>
         <p>Average Rating: {selectedMovie.average_rating * 10}%</p>

@@ -1,12 +1,12 @@
 import './SearchBar.css' 
 
-function SearchBar({search, searchFilter, ref}){
+function SearchBar({search, searchFilter, clearInput, barVisible}){
 //pass search down as a prop with state 
-console.log('search filter', searchFilter)
-console.log('search', search)
+
+if(!search && barVisible){
   return (
   <div className='search-bar-container'>
-    <h1>Rancid Tomatillos</h1>
+    
     <form>
       <input 
       id='search'
@@ -19,6 +19,24 @@ console.log('search', search)
     </form>
     </div>
   )
+} else if (search && barVisible) {
+  return (
+    <div className='search-bar-container-btn'>
+     
+      <form className='form-btn'>
+        <input 
+        id='search-btn'
+        type='text'
+        placeholder='Search for movies here!   🔍'
+        name= {search}
+        value={search}
+        onChange ={searchFilter}
+        />
+      </form>
+        <button onClick={clearInput}>clear input</button>
+      </div>
+    )
+}
 }
 
 export default SearchBar

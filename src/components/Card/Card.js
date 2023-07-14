@@ -5,10 +5,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 function Card({title, img, rating, id}) {
-// const [movieID, setMovieID] = useState("")
-
-
-
   return (
       <Link to = {`/movies/${id}`}> 
     <div  id ={id} className='card' name={title}>
