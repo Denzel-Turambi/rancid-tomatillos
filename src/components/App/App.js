@@ -4,8 +4,9 @@ import './App.css';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { getMovies, getSingleMovie } from '../../ApiCalls';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -14,6 +15,10 @@ function App() {
   const [movieID, setMovieID] = useState("")
   const [error, setError] = useState("")
   const [allMoviesLoading, setAllMoviesLoading] = useState(false)
+  const [search, setSearch] = useState("")
+  const [filter, setFilter] = useState("")
+  const [value, setValue] = useState("")
+  // const input = useRef(null)
 
   useEffect(() => {
     setAllMoviesLoading(true)
@@ -31,9 +36,22 @@ function App() {
     })
   }, [])
 
+  useEffect(()=>{
+    const filteredMovies = movies.filter(movie=> movie.title.toLowerCase().includes(search))
+    setFilter(filteredMovies)
+  }, [movies, search])
 
+  function searchFilter(event){
+    setValue(event.target.value)
+    const searchMovie = event.target.value.toLowerCase()
+      setSearch(searchMovie)
+  }
 
-
+function clearInput(event){
+  console.log('suuuuuup')
+  setValue("")
+  
+}
 
 if(error){
   return(<h1>{"An error occurred while fetching movies."}</h1>)
@@ -41,20 +59,31 @@ if(error){
   return(<h1>Loading...</h1>)
 }
 
+
+// function searchFilter(event){
+//   const searchMovie = event.target.value.toLowerCase()
+//   setSearch(searchMovie)
+//   const filteredMovies = movies.filter(movie=> movie.title.toLowerCase().includes(search))
+//  console.log('FILERED MOVIES', filteredMovies)
+//  setFilter(filteredMovies)
+
+// }
+
+
+
+
 return (
   //use fragment instead of Div ?
   <div>
-    <nav>
-      <h1>Rancid Tomatillos</h1>
-    </nav>
+    < SearchBar search={search} searchFilter={searchFilter} />
     <section className='all-movies-display'>
     {/* <NavLink to = {`/movies/${movieID}`}/> */}
     <Routes>
         <Route path ="/" element={ 
-        <MovieContainer className='movie-container' movies = {movies} /> 
+        <MovieContainer className='movie-container' movies = {movies} search={search} searchFilter={searchFilter} filtered={filter}/> 
         } />
       <Route path = "/movies/:id" element={
-          <MovieDetails  errorHandling = {error} setErrorHandling = {setError}/>
+          <MovieDetails  errorHandling = {error} setErrorHandling = {setError} selectedMovie={filter} clearInput={clearInput} value={value}/>
       } />
     </Routes>
     </section>

@@ -1,0 +1,12 @@
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right:10%
+}
+
+input#search{
+text-indent:8%;
+ width: 135%
+}
