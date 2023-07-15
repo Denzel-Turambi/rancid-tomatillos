@@ -2,9 +2,9 @@ import './MovieContainer.css';
 import Card from '../Card/Card';
 
 function MovieContainer(props) {
-  let movieFilter=[]
-  let movieCards= []
-  const filterMovies = props.filtered
+  let movieFilter=[];
+  let movieCards= [];
+  const filterMovies = props.filtered;
   if(props.search){
     movieFilter = filterMovies.map(filteredMovie => {
       return (
@@ -29,7 +29,6 @@ function MovieContainer(props) {
           rating={movie.average_rating}
           id={movie.id}
           key={movie.id}
-          showMovie= {props.showMovie}
           />
         </div>
         
@@ -45,6 +44,6 @@ if(props.search && !movieFilter.length) {
       {movieFilter}
     </div>
   )
-}
+};
 
-export default MovieContainer
+export default MovieContainer;

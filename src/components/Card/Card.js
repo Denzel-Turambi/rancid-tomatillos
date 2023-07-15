@@ -1,22 +1,20 @@
 import './Card.css';
-import {useState, useEffect} from 'react';
-import { getSingleMovie } from '../../ApiCalls';
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-function Card({title, img, rating, id}) {
+function Card({ title, img, rating, id }) {
   return (
-      <Link to = {`/movies/${id}`}> 
-    <div  id ={id} className='card' name={title}>
-      <img id ={id} src={img} className='movie-poster' alt={title}></img>
-      <div className='card-info'>
-        <h3 id ={id}>{title}</h3>
-       <h3 id ={id}>{rating}/10</h3>
-       </div>
-    </div>
+    <Link to={`/movies/${id}`}>
+      <div id={id} className='card' name={title}>
+        <img id={id} src={img} className='movie-poster' alt={title} />
+        <div className='card-info'>
+          <h3 id={id}>{title}</h3>
+          <h3 id={id}>{rating}/10</h3>
+        </div>
+      </div>
     </Link>
   )
-}
+};
 
 export default Card;
 
@@ -27,18 +25,3 @@ export default Card;
 //   rating: PropTypes.number.isRequired,
 //   clickHandler:PropTypes.func.isRequired
 // }
-
-
-// useEffect(() => {
-  //   if(id){
-  //     console.log('hello')
-  //     getSingleMovie(movieID)
-  //    .then(data => showMovie(data.movie))
-  //   //  .catch(error => console.log('ERROR', error))
-  //   }
-  //   return setMovieID(prevState => "")
-  // }, [movieID])
-  
-  // console.log('movie ID', movieID)
-
-

@@ -46,4 +46,42 @@ describe('dashboard', () => {
     .get('.card').find("img").should('be.visible')
     .get('img[id="436270"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
   })
+
+  it('should allow the user to navigate back to the home page using the text logo', () => {
+    cy.get('#436270').click()
+    .url().should('include', '/436270')
+    .get('h1[class="logo-title"]').click()
+    .url().should('include', '/')
+  })
+
+  it('should allow the user to navigate back to the home page using the image logo', () => {
+    cy.get('#436270').click()
+    .url().should('include', '/436270')
+    .get('img[class="logo-img"]').click()
+    .url().should('include', '/')
+  })
+
+  it('should have the search bar be visible on the home page be typable and filter as typing', () => {
+    cy.get('.search-bar-container').should('be.visible')
+    .get('.movie-container').find('.card').should('have.length', 3)
+    .get('input[id="search"]').type('Black Adam')
+    .get('.movie-container').find('.card').should('have.length', 1)
+    .get('.search-bar-container-btn').find('.clear-btn').should('be.visible')
+    .click()
+    .get('.search-bar-container-btn').should('not.exist')
+    .get('.movie-container').find('.card').should('have.length', 3)
+  })
+
+  it('should have the search bar disapear when a movie is clicked and details are displayed and reappear on the home page', () => {
+    cy.get('.search-bar-container').should('be.visible')
+    .get('.movie-container').find('.card').get('#436270').click()
+    .get('.search-bar-container').should('not.exist')
+    .get('search-bar-container-btn').should('not.exist')
+    .get('.movie-details').find('.details-btn').click()
+    .get('.search-bar-container').should('be.visible')
+    .get('.logo-title').click()
+    .get('.search-bar-container').should('be.visible')
+    .get('.logo-img').click()
+    .get('.search-bar-container').should('be.visible')
+  })
 })
