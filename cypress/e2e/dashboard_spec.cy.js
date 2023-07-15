@@ -60,4 +60,28 @@ describe('dashboard', () => {
     .get('img[class="logo-img"]').click()
     .url().should('include', '/')
   })
+
+  it('should have the search bar be visible on the home page be typable and filter as typing', () => {
+    cy.get('.search-bar-container').should('be.visible')
+    .get('.movie-container').find('.card').should('have.length', 3)
+    .get('input[id="search"]').type('Black Adam')
+    .get('.movie-container').find('.card').should('have.length', 1)
+    .get('.search-bar-container-btn').find('.clear-btn').should('be.visible')
+    .click()
+    .get('.search-bar-container-btn').should('not.exist')
+    .get('.movie-container').find('.card').should('have.length', 3)
+  })
+
+  it('should have the search bar disapear when a movie is clicked and details are displayed and reappear on the home page', () => {
+    cy.get('.search-bar-container').should('be.visible')
+    .get('.movie-container').find('.card').get('#436270').click()
+    .get('.search-bar-container').should('not.exist')
+    .get('search-bar-container-btn').should('not.exist')
+    .get('.movie-details').find('.details-btn').click()
+    .get('.search-bar-container').should('be.visible')
+    .get('.logo-title').click()
+    .get('.search-bar-container').should('be.visible')
+    .get('.logo-img').click()
+    .get('.search-bar-container').should('be.visible')
+  })
 })
