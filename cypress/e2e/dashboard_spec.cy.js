@@ -46,4 +46,18 @@ describe('dashboard', () => {
     .get('.card').find("img").should('be.visible')
     .get('img[id="436270"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
   })
+
+  it('should allow the user to navigate back to the home page using the text logo', () => {
+    cy.get('#436270').click()
+    .url().should('include', '/436270')
+    .get('h1[class="logo-title"]').click()
+    .url().should('include', '/')
+  })
+
+  it('should allow the user to navigate back to the home page using the image logo', () => {
+    cy.get('#436270').click()
+    .url().should('include', '/436270')
+    .get('img[class="logo-img"]').click()
+    .url().should('include', '/')
+  })
 })
