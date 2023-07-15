@@ -6,7 +6,7 @@ import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { getMovies, getSingleMovie } from '../../ApiCalls';
 import {useState, useEffect, useRef} from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
@@ -60,10 +60,10 @@ if(error){
 return (
   <div>
   <nav className="header">
-    {/* <div class='logo'> */}
-      <h1 className ="logo-title">Rancid Tomatillos</h1>
-      <img className ="logo-img" src={require('../../Tomatillo.png')} height='160px' width='160px'/>
-    {/* </div> */}
+    <Link to="/" className="nav-link" style={{textDecoration:'none'}}>
+      <h1 className ="logo-title" onClick={clearInput}> Rancid Tomatillos</h1>
+      <img className ="logo-img" src={require('../../Tomatillo.png')} height='160px' width='160px' onClick={clearInput} alt="tomatillo img"/>
+    </Link>
     < SearchBar search={search} searchFilter={searchFilter} clearInput={clearInput} setBarVisible={setBarVisible} barVisible={barVisible}/>
   </nav>
     <section className='all-movies-display'>

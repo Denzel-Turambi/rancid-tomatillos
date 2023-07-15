@@ -22,9 +22,13 @@ body {
   text-shadow: 0 0 7px #FDFFFC;
 }
 
-.header{
+.nav-link, .header{
   display:flex;
   align-items: center;
+}
+
+.header {
+  justify-content: space-between;
 }
 
 .error-message {
