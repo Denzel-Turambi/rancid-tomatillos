@@ -16,8 +16,6 @@ setBarVisible(false)
 useEffect(() => {
   if(id.id){
     setIsLoading(true)
-    setSingleMovieError(null)
-    setSingleMovieError('')
 
   getSingleMovie(id.id)
     .then(data => setSelectedMovie(data.movie))
@@ -54,7 +52,7 @@ if(singleMovieError){
         <p className="text-details"> <strong>Genre(s): </strong> {selectedMovie.genres}</p>
         {/* {selectedMovie.revenue && <p>Revenue: ${selectedMovie.revenue}</p> || <p>Revenue: Information not available</p>}
         {selectedMovie.budget && <p>Budget: ${selectedMovie.budget}</p> || <p>Budget: Information not available</p>} */}
-        <img className='movie-details-img' src={selectedMovie.backdrop_path} ></img>
+        <img className='movie-details-img' src={selectedMovie.backdrop_path} alt={selectedMovie.title}></img>
      </div>
     )
 }
