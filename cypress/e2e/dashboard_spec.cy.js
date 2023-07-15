@@ -16,7 +16,7 @@ describe('dashboard', () => {
     cy.get('nav').contains('h1', 'Rancid Tomatillos')
     .url().should('include', '/')
     .get('.all-movies-display').contains('.movie-container', 'Black Adam')
-    .get('.all-movies-display').contains('.movie-container', '4/10')
+    .get('.all-movies-display').contains('.movie-container', '40%')
     .get('.card').find("img").should('be.visible')
   })
 
@@ -42,7 +42,7 @@ describe('dashboard', () => {
     .url().should('include', '/')
     .get('nav').contains('h1', 'Rancid Tomatillos')
     .get('.all-movies-display').contains('.movie-container', 'Black Adam')
-    .get('.all-movies-display').contains('.movie-container', '4/10')
+    .get('.all-movies-display').contains('.movie-container', '40%')
     .get('.card').find("img").should('be.visible')
     .get('img[id="436270"]').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
   })

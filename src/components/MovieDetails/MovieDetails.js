@@ -55,6 +55,7 @@ if(singleMovieError){
 
 export default MovieDetails;
 
-// MovieDetails.propTypes ={
-//   selectedMovieID: PropTypes.number.isRequired
-// }
+MovieDetails.propTypes ={
+  clearInput:PropTypes.func.isRequired, 
+  setBarVisible:PropTypes.func.isRequired
+};

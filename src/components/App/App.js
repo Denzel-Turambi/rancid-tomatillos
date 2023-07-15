@@ -25,7 +25,7 @@ function App() {
       if(error.status === 500) {
         setError('Oops! Looks like there is a server error.');
       } else {
-        setError(error);
+        setError(error.status);
       }
     })
     .finally(() => {
@@ -79,4 +79,5 @@ return (
 };
 
 export default App;
+
 

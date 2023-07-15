@@ -1,4 +1,5 @@
 import './SearchBar.css'
+import PropTypes from 'prop-types'
 
 function SearchBar({ search, searchFilter, clearInput, barVisible }) {
   if (!search && barVisible) {
@@ -37,3 +38,10 @@ function SearchBar({ search, searchFilter, clearInput, barVisible }) {
 };
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+  search:PropTypes.string.isRequired, 
+  searchFilter: PropTypes.func.isRequired, 
+  clearInput: PropTypes.func.isRequired, 
+  barVisible: PropTypes.bool.isRequired
+};
