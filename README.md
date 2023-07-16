@@ -23,8 +23,7 @@ Apply real-world API integration and handle network requests, including error ha
 <div align="center">  
 <a href="https://www.javascript.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" height="50" /></a>  
 <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" height="50" /></a>  
-<a href="https://www.w3schools.com/css/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" height="50" /></a>  
-<a href="https://webpack.js.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/webpack-original.svg" alt="Webpack" height="50" /></a>  
+<a href="https://www.w3schools.com/css/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" alt="CSS3" height="50" /></a>   
 <a href="https://nodejs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" alt="Node.js" height="50" /></a>  
 <a href="https://github.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="50" /></a>  
 <a href="https://react.dev/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="50" /></a>  
@@ -33,7 +32,17 @@ Apply real-world API integration and handle network requests, including error ha
 
 </td><td valign="top" width="33%">
 
+## COLLABORATORS
+- Caitlin Cradick - [Github](https://github.com/caitlincradick) | [LinkedIn](https://www.linkedin.com/in/caitlincradick/)
+- Denzel Turambi - [Github](https://github.com/Denzel-Turambi) | [LinkedIn](https://www.linkedin.com/in/denzel-turambi-71a298267/)
 
+## PREVIEW OF APPLICATION
+![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/122255250/253780634-e0a4f94b-0de6-4823-b2d0-3a26f24675b5.gif)
+
+## INSTALLATION INSTRUCTIONS
+1. Fork this repo, and clone it down into your local machine using the SSH key
+2. After cloning it down, `cd` into the project and run `npm install`
+3. Once the installation is done, you can now run `npm start` to run the application in your web browser
 
 
 
