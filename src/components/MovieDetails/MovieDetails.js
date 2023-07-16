@@ -29,7 +29,7 @@ useEffect(() => {
       setIsLoading(false);
     })
   }
-}, []);
+}, [id.id]);
 
 if(singleMovieError){
   return <h1 className ="error-message" >{`${singleMovieError}. Please try again later.`}</h1>

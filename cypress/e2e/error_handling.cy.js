@@ -21,4 +21,14 @@ describe('error handling', () => {
     .url().should('include', '/436270')
     .get('h1').contains('SyntaxError: Unexpected end of JSON input. Please try again later.')
   })
+  it('should take user to an error page when user types in route path that does not exist', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+      statusCode: 404,
+      fixture: '.././fixtures/allMoviesData.json'
+  })
+  .visit('http://localhost:3000/dlkkjlaadfkjkljsadkjlfds')
+  .url().should('include', '/404')
+  .get('.try-again').click()
+  .url().should('include', '/')
+  })
 })
