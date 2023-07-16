@@ -2,11 +2,11 @@
 "Rancid Tomatillos" is a web application project developed at the Turing School of Software and Design. It focuses on React fundamentals, testing, and routing using React Router. The project involves displaying a collection of movies, showing individual movie details, and implementing network requests and error handling. It concludes with the team choosing their own learning goals and areas of focus, such as refactoring code, responsive design, or additional testing.
 
 ## LEARNING GOALS
-Gain competency in React fundamentals and apply React concepts effectively.
-Develop proficiency in testing React components and asynchronous JavaScript code, including the use of Cypress for end-to-end testing.
-Practice refactoring techniques to improve code quality, readability, and maintainability.
-Create a multi-page user experience using React Router to handle routing and navigation.
-Apply real-world API integration and handle network requests, including error handling and data fetching.
+- Gain competency in React fundamentals and apply React concepts effectively.
+- Develop proficiency in testing React components and asynchronous JavaScript code, including the use of Cypress for end-to-end testing.
+- Practice refactoring techniques to improve code quality, readability, and maintainability.
+- Create a multi-page user experience using React Router to handle routing and navigation.
+- Apply real-world API integration and handle network requests, including error handling and data fetching.
 
 ## WINS/CHALLENGES 
 ### WINS
