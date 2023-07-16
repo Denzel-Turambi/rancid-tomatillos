@@ -29,7 +29,7 @@ useEffect(() => {
       setIsLoading(false);
     })
   }
-}, []);
+}, [id.id]);
 
 if(singleMovieError){
   return <h1 className ="error-message" >{`${singleMovieError}. Please try again later.`}</h1>
@@ -55,6 +55,7 @@ if(singleMovieError){
 
 export default MovieDetails;
 
-// MovieDetails.propTypes ={
-//   selectedMovieID: PropTypes.number.isRequired
-// }
+MovieDetails.propTypes ={
+  clearInput:PropTypes.func.isRequired, 
+  setBarVisible:PropTypes.func.isRequired
+};

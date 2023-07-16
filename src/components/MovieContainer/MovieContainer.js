@@ -1,5 +1,6 @@
 import './MovieContainer.css';
 import Card from '../Card/Card';
+import PropTypes from 'prop-types'
 
 function MovieContainer(props) {
   let movieFilter=[];
@@ -30,8 +31,7 @@ function MovieContainer(props) {
           id={movie.id}
           key={movie.id}
           />
-        </div>
-        
+        </div>   
     )
   })
 }
@@ -47,3 +47,11 @@ if(props.search && !movieFilter.length) {
 };
 
 export default MovieContainer;
+
+MovieContainer.propTypes = {
+  props: PropTypes.shape({
+    movies:PropTypes.array.isRequired, 
+    filtered:PropTypes.array.isRequired, 
+    search:PropTypes.string.isRequired
+  })
+};

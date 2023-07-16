@@ -3,9 +3,10 @@ import './App.css';
 import '../../Tomatillo.png';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import PageNotFound from '../PageNotFound/PageNotFound';
 import { getMovies } from '../../ApiCalls';
 import {useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
   const [filter, setFilter] = useState("");
   const [value, setValue] = useState("");
   const [barVisible, setBarVisible] = useState(true);
- 
+
   useEffect(() => {
     setAllMoviesLoading(true);
     getMovies()
@@ -53,7 +54,7 @@ if(error){
   return(<h1 className ="error-message" >{"An error occurred while fetching movies."}</h1>);
 } else if(allMoviesLoading) {
   return(<h1 className ="error-message" >Loading...</h1>);
-};
+} 
 
 return (
   <div>
@@ -72,6 +73,8 @@ return (
       <Route path = "/movies/:id" element={
           <MovieDetails clearInput={clearInput} setBarVisible={setBarVisible}/>
       } />
+      <Route path="/404" element={<PageNotFound/>}/>
+      <Route path="*" element={<Navigate to= "/404"/>}/>
     </Routes>
     </section>
   </div>
@@ -79,4 +82,5 @@ return (
 };
 
 export default App;
+
 

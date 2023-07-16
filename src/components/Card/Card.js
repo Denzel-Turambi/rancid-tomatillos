@@ -9,7 +9,7 @@ function Card({ title, img, rating, id }) {
         <img id={id} src={img} className='movie-poster' alt={title} />
         <div className='card-info'>
           <h3 id={id}>{title}</h3>
-          <h3 id={id}>{rating}/10</h3>
+          <h3 id={id}>{rating* 10}%</h3>
         </div>
       </div>
     </Link>
@@ -18,10 +18,9 @@ function Card({ title, img, rating, id }) {
 
 export default Card;
 
-// Card.propTypes = {
-//   id: PropTypes.number.isRequired, 
-//   img: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   rating: PropTypes.number.isRequired,
-//   clickHandler:PropTypes.func.isRequired
-// }
+Card.propTypes = {
+  id: PropTypes.number.isRequired, 
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+};
