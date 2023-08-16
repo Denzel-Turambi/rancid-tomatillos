@@ -9,13 +9,12 @@ function MovieContainer(props) {
   if(props.search){
     movieFilter = filterMovies.map(filteredMovie => {
       return (
-        <div className= '.movie-container' key={filteredMovie.id}>
+        <div className='.movie-container' key={filteredMovie.id}>
         <Card 
         title={filteredMovie.title}
         img={filteredMovie.poster_path}
         rating={filteredMovie.average_rating}
         id={filteredMovie.id}
-        
         />
       </div>
       )
@@ -29,7 +28,6 @@ function MovieContainer(props) {
           img={movie.poster_path}
           rating={movie.average_rating}
           id={movie.id}
-          
           />
         </div>   
     )
