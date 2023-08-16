@@ -16,7 +16,7 @@ setBarVisible(false);
 useEffect(() => {
   if(id.id){
     setIsLoading(true);
-  getSingleMovie(id.id)
+    getSingleMovie(id.id)
     .then(data => setSelectedMovie(data.movie))
     .catch(err => {
       if(err.status === 500){
@@ -29,7 +29,7 @@ useEffect(() => {
       setIsLoading(false);
     })
   }
-}, [id.id]);
+}, []);
 
 if(singleMovieError){
   return <h1 className ="error-message" >{`${singleMovieError}. Please try again later.`}</h1>
